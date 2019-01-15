@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Istiqaama | {% block header %}{% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load staticfiles %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font/css/fontawesome.min.css' %}">
+  </head>
+  <body>
+
+      {% block content %}{% endblock%}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'jqueryfile.js' %}"></script>
+    <script src="{% static 'css/bootstrap.min.css' %}"></script>
+  </body>
+</html>

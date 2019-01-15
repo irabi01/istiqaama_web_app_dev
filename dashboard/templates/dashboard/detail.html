@@ -1,0 +1,131 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block header %}Istiqaama-Dashboard | Member_detail{% endblock %}
+{% block content %}
+<div class="detail_container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Member details</h1>
+      </div>
+    </div
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="member_info_content">
+          <h2>Member Information</h2>
+          <div class="dropdown-divider"></div>
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <center>
+                    <figure>
+                      <img src="{{fd.dependant_id.image.url}}" class="img-fluid img-thumbnail" alt="image is loading ...">
+                    </figure>
+                  </center>
+                </td>
+              </tr>
+              <tr>
+                <td>First Name:</td>
+                <td><strong>{{fd.dependant_id.f_name}}</strong></td>
+              </tr>
+              <tr>
+                <td>Middle Name:</td>
+                <td><strong>{{fd.dependant_id.m_name}}</strong></td>
+              </tr>
+              <tr>
+                <td>Last Name:</td>
+                <td><strong>{{fd.dependant_id.l_name}}</strong></td>
+              </tr>
+              <tr>
+                <td>Year:</td>
+                <td><strong>{{fd.dependant_id.mwaka}}</strong></td>
+              </tr>
+              <tr>
+                <td>Member ID:</td>
+                <td><strong>{{fd.dependant_id.member_id}}</strong></td>
+              </tr>
+              <tr>
+                <td>Amount:</td>
+                <td><strong>Tshs.{{fd.dependant_id.amount}}/=</strong></td>
+              </tr>
+              <tr>
+                <td>Date of birth(Age):</td>
+                <td><strong>{{fd.dependant_id.age}}</strong></td>
+              </tr>
+              <tr>
+                <td>Address:</td>
+                <td><strong>{{fd.dependant_id.address}}</strong></td>
+              </tr>
+              <tr>
+                <td>Area of Residence:</td>
+                <td><strong>{{fd.dependant_id.residence}}</strong></td>
+              </tr>
+              <tr>
+                <td>Phone number:</td>
+                <td><strong>{{fd.dependant_id.phone_number}}</strong></td>
+              </tr>
+              <tr>
+                <td>Gender:</td>
+                <td><strong>{{fd.dependant_id.gender}}</strong></td>
+              </tr>
+              <tr>
+                <td>Marital status:</td>
+                <td><strong>{{fd.dependant_id.married}}</strong></td>
+              </tr>
+              <tr>
+                <td>Wife(s):</td>
+                <td><strong>{{fd.dependant_id.mwanamke}}</strong></td>
+              </tr>
+              <tr>
+                <td>Husband:</td>
+                <td><strong>{{fd.dependant_id.mwanaume}}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="dependant_info_content">
+          <h2>Dependant Information</h2>
+          <div class="dropdown-divider"></div>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Parent(s)</td>
+                <td>Parent(s): <strong>{{fd.wazazi}}</strong></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="w3-grey"><center>Children</center></td>
+              </tr>
+              <tr>
+                <td>Children above 15 and studies:</td>
+                <td><strong>{{fd.watoto_above}}</strong></td>
+              </tr>
+              <tr>
+                <td>Children below 15:</td>
+                <td><strong>{{fd.watoto_below}}</strong></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="w3-grey"><center>Others</center></td>
+              </tr>
+              <tr>
+                <td>Orphans:</td>
+                <td><strong>{{fd.watoto_yatima}}</strong></td>
+              </tr>
+              <tr>
+                <td>Raising Children:</td>
+                <td><strong>{{fd.watoto_wakulea}}</strong></td>
+              </tr>
+            </tbody>
+          <table>
+            <!-- <a href="" class="btn btn-sm btn_update_member btn-info"><i class="fa fa-pencil"></i></a>  -->
+            <a href="{% url 'generate_single_view' fd.dependant_id.id %}" title="Preview document and print" target="_blank" class="btn btn-sm btn_print_member btn-primary" style="height:80px; width:80px;padding-top:15px;font-size:30px;"><i class="fa fa-print"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

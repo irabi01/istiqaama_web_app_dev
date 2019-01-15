@@ -1,0 +1,72 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block header %}Istiqaama-Dashboard | Member_list{% endblock %}
+{% block content %}
+<div class="add_container members_list">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Members' List</h1>
+        <!-- {% if messages %}
+          {% for message in messages %}
+          <div class="w3-panel w3-display-container w3-red">
+           <span onclick="this.parentElement.style.display='none'"
+           class="w3-button w3-display-topright">x</span>
+            <h1 {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</h1>
+          </div>
+          {% endfor %}
+        {% endif %} -->
+        <a href="{% url 'list_view' %}">
+          <span class="badge badge-primary badge-pill"><i class="fa fa-refresh"></i> Refresh</span> 
+        </a>
+        <div class="dropdown-divider"></div>
+        <form method="get" action="">
+          <div class="form-group">
+            <input type="text" name="query" value="" placeholder="enter your key word here" class="form-control">
+          </div>
+        </form>
+        <table class="table table-sm table-bordered table-hover">
+          <thead>
+            <tr>
+
+              <th scope="col">First Name</th>
+              <th scope="col">Middle Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Year</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Mobile #</th>
+              <th scope="col">Member_ID</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for m in member%}
+            <tr>
+              <td>{{m.f_name}}</td>
+              <td>{{m.m_name}}</td>
+              <td>{{m.l_name}}</td>
+              <td>{{m.mwaka}}</td>
+              <td>{{m.gender}}</td>
+              <td>{{m.phone_number}}</td>
+              <td>{{m.member_id}}</td>
+              <td>
+                {% if user.is_authenticated%}
+                  {% if user.username == 'admin'%}
+                  <a href="{% url 'detail_view' m.id %}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                  <a href="{% url 'delete_detail_view' m.id %}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                  {% else %}
+                  <a href="{% url 'detail_view' m.id %}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                  {% endif%}
+                {% else %}
+                  <h1>Please login to access member</h1>
+                {% endif%}
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

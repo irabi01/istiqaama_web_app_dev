@@ -1,0 +1,75 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block header %}Istiqaama-Dashboard | Member_dependant{% endblock %}
+{% block content %}
+<div class="add_container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Add member's dependant</h1>
+        <hr>
+        {% if messages %}
+          {% for message in messages %}
+          <div class="w3-panel w3-display-container w3-green">
+           <span onclick="this.parentElement.style.display='none'"
+           class="w3-button w3-display-topright">x</span>
+            <h1 {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</h1>
+          </div>
+          {% endfor %}
+        {% endif %}
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Member ID</label>
+                  {{form.dependant_id}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Number of Parent(s)</label>
+                  {{form.wazazi}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Number of Childrens above 15</label>
+                  {{form.watoto_above}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Number of Childrens below 15</label>
+                  {{form.watoto_below}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Number of Orphans</label>
+                  {{form.watoto_yatima}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Watoto wa kuwalea</label>
+                  {{form.watoto_wakulea}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-sm btn-primary btn-block">add dependant</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

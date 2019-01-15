@@ -1,0 +1,89 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block header %}Istiqaama-Dashboard | Home{% endblock %}
+{% block content %}
+<div class="home_dash">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="home_content">
+          <h1>Number of Users</h1>
+          <p><span class="badge badge-primary badge-pill">Total: {{count_user}}</span></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="home_content">
+          <h1>Members</h1>
+          <p><span class="badge badge-primary badge-pill">Total: {{count_member}}</span></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="home_content">
+          <h1>Amount Collected</h1>
+          <p><span class="badge badge-primary badge-pill">Tshs. {{total}}/=</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="home_second_container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="member_list_part">
+          <h2>Recorded members</h2>
+          <div class="dropdown-divider"></div>
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in member%}
+              <tr>
+                <th scope="row">{{m.id}}</th>
+                <td>{{m.f_name}}</td>
+                <td>{{m.l_name}}</td>
+                <td><a href="{% url 'detail_view' m.id %}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <a href="{% url 'list_view' %}" class="btn btn-sm btn_view_all_members btn-primary">view all</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="member_list_part">
+          <h2>List of Staffs</h2>
+          <div class="dropdown-divider"></div>
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in member%}
+              <tr>
+                <th scope="row">{{m.id}}</th>
+                <td>{{m.f_name}}</td>
+                <td>{{m.l_name}}</td>
+                <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <a href="#" class="btn btn-sm btn_view_all_staff btn-primary">view all</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

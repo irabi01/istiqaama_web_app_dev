@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block header %}Login{% endblock %}
+{% block content %}
+  <div class="container_login">
+    <div class="container">
+      <h1>Istiqaama Muslim Community of Tanzania</h1>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="form_container">
+            <center><img src="/static/images/logo.png" class="img-fluid" width="50%" alt="Responsive image"></center>
+            <!-- <h1>Istiqaama</h1> -->
+            <hr>
+            <p>Login to your account</p>
+            <form method="post" action="{% url 'login_view' %}">
+              {% csrf_token %}
+              {{form}}
+              <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-block _istiqaama_login_button">login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
